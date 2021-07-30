@@ -1,13 +1,13 @@
 package com.example.mongoTest;
 
 
+import com.example.mongoTest.Entities.TestCase;
+import com.example.mongoTest.Repositories.StudentRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -26,7 +26,7 @@ public class AccessingDataMongodbApplication {
         return args -> {
             Address address = new Address("POL", "WRO", "80-700");
             String email = "krycha@onet.pl";
-            Student student = new Student(
+            TestCase student = new TestCase(
                     "Ludwik",
                     "Krychowiak",
                     email,
@@ -34,7 +34,8 @@ public class AccessingDataMongodbApplication {
                     address,
                     List.of("CS", "Math"),
                     BigDecimal.TEN,
-                    LocalDateTime.now()
+                    LocalDateTime.now(),
+                    "test"
 
             );
 //            usingMongoTemplateAndQuery(repository, mongoTemplate, email, student);
