@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @AllArgsConstructor
 @Service
 public class TestCaseService {
@@ -14,5 +16,9 @@ public class TestCaseService {
 
     public List<TestCase> getAllTestCases() {
         return testCaseRepository.findAll();
+    }
+
+    public Optional<TestCase> getRequirementByEmail(String email){
+        return testCaseRepository.findTestCaseByEmail(email);
     }
 }

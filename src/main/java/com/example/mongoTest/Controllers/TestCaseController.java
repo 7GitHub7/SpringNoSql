@@ -4,10 +4,12 @@ import com.example.mongoTest.Services.TestCaseService;
 import com.example.mongoTest.Entities.TestCase;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/testcase")
@@ -19,5 +21,10 @@ public class TestCaseController {
     @GetMapping
     public List<TestCase> fetchAllTestCases(){
         return testCaseService.getAllTestCases();
+    }
+
+    @GetMapping(path = "{email}")
+    public Optional<TestCase> findRequirementByEmail(@PathVariable String email ){
+        return testCaseService.getRequirementByEmail(email);
     }
 }

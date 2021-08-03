@@ -22,30 +22,30 @@ public class AccessingDataMongodbApplication {
         SpringApplication.run(AccessingDataMongodbApplication.class, args);
     }
 
-    @Bean
-    CommandLineRunner runner(TestCaseRepository repository, MongoTemplate mongoTemplate) {
-        return args -> {
-            Address address = new Address("POL", "WRO", "80-700");
-            String email = "krycha@onet.pl";
-            TestCase testCase = new TestCase("test",
-                    "Tomek",
-                    "tomek@onet.p",
-                    "1",
-                    "test",
-                    LocalDateTime.now(),
-                    "test",ResultStatus.Pass);
-
-
-
-//            usingMongoTemplateAndQuery(repository, mongoTemplate, email, student);
-            repository.findRequirementByEmail(email).ifPresentOrElse(s -> {
-                System.out.println(s +  " already exist");
-            }, () -> {
-                System.out.println("Inserting requirement ");
-                repository.insert(testCase);
-            });
-        };
-    }
+//    @Bean
+//    CommandLineRunner runner(TestCaseRepository repository, MongoTemplate mongoTemplate) {
+//        return args -> {
+//            Address address = new Address("POL", "WRO", "80-700");
+//            String email = "krycha@onet.pl";
+//            TestCase testCase = new TestCase("test",
+//                    "Tomek",
+//                    "tomek@onet.p",
+//                    "1",
+//                    "test",
+//                    LocalDateTime.now(),
+//                    "test",ResultStatus.Pass);
+//
+//
+//
+////            usingMongoTemplateAndQuery(repository, mongoTemplate, email, student);
+//            repository.findRequirementByEmail(email).ifPresentOrElse(s -> {
+//                System.out.println(s +  " already exist");
+//            }, () -> {
+//                System.out.println("Inserting requirement ");
+//                repository.insert(testCase);
+//            });
+//        };
+//    }
 
 //    private void usingMongoTemplateAndQuery(StudentRepository repository, MongoTemplate mongoTemplate, String email, Student student) {
 //        Query query = new Query();
