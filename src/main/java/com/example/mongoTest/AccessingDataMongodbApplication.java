@@ -29,7 +29,7 @@ public class AccessingDataMongodbApplication {
             String email = "krycha@onet.pl";
             TestCase testCase = new TestCase("test",
                     "Tomek",
-                    "tomek@onet.pl",
+                    "tomek@onet.p",
                     "1",
                     "test",
                     LocalDateTime.now(),
