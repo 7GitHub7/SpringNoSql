@@ -3,6 +3,7 @@ package com.example.mongoTest;
 
 import com.example.mongoTest.Entities.TestCase;
 import com.example.mongoTest.Repositories.RequirementRepository;
+import com.example.mongoTest.Repositories.TestCaseRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,28 +23,26 @@ public class AccessingDataMongodbApplication {
     }
 
     @Bean
-    CommandLineRunner runner(RequirementRepository repository, MongoTemplate mongoTemplate) {
+    CommandLineRunner runner(TestCaseRepository repository, MongoTemplate mongoTemplate) {
         return args -> {
             Address address = new Address("POL", "WRO", "80-700");
             String email = "krycha@onet.pl";
-            TestCase student = new TestCase(
-                    "Ludwik",
-                    "Krychowiak",
-                    email,
-                    Gender.MALE,
-                    address,
-                    List.of("CS", "Math"),
-                    BigDecimal.TEN,
+            TestCase testCase = new TestCase("test",
+                    "Tomek",
+                    "tomek@onet.pl",
+                    "1",
+                    "test",
                     LocalDateTime.now(),
-                    "test"
+                    "test",ResultStatus.Pass);
 
-            );
+
+
 //            usingMongoTemplateAndQuery(repository, mongoTemplate, email, student);
-            repository.findStudentByEmail(email).ifPresentOrElse(s -> {
+            repository.findRequirementByEmail(email).ifPresentOrElse(s -> {
                 System.out.println(s +  " already exist");
             }, () -> {
-                System.out.println("Inserting student ");
-                repository.insert(student);
+                System.out.println("Inserting requirement ");
+                repository.insert(testCase);
             });
         };
     }

@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.Optional;
 
 public interface RequirementRepository extends MongoRepository<Requirement,String> {
-    Optional<TestCase> findStudentByEmail(String email);
+    Optional<TestCase> findRequirementByEmail(String email);
 
 //    @Query("")
 //    void test();
