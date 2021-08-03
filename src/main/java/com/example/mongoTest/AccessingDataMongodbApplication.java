@@ -2,7 +2,7 @@ package com.example.mongoTest;
 
 
 import com.example.mongoTest.Entities.TestCase;
-import com.example.mongoTest.Repositories.StudentRepository;
+import com.example.mongoTest.Repositories.RequirementRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -22,7 +22,7 @@ public class AccessingDataMongodbApplication {
     }
 
     @Bean
-    CommandLineRunner runner(StudentRepository repository, MongoTemplate mongoTemplate) {
+    CommandLineRunner runner(RequirementRepository repository, MongoTemplate mongoTemplate) {
         return args -> {
             Address address = new Address("POL", "WRO", "80-700");
             String email = "krycha@onet.pl";
