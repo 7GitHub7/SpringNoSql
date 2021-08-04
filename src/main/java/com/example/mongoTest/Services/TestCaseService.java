@@ -18,7 +18,14 @@ public class TestCaseService {
         return testCaseRepository.findAll();
     }
 
-    public Optional<TestCase> getRequirementByEmail(String email){
+    public Optional<TestCase> getTestCaseByEmail(String email) {
         return testCaseRepository.findTestCaseByEmail(email);
+    }
+
+    public void addTestCase(TestCase testCase) {
+        if (!testCase.getId().isEmpty()) {
+            testCase.setId(null);
+        }
+        testCaseRepository.save(testCase);
     }
 }

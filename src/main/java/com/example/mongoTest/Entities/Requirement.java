@@ -1,11 +1,11 @@
 package com.example.mongoTest.Entities;
 
-import com.example.mongoTest.ReviewStatus;
+import lombok.Data;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 
 import java.time.LocalDateTime;
-
+@Data
 public class Requirement {
     @Id
     private String id;
