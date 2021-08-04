@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api/v1/students")
+@RequestMapping("api/v1/requirements")
 @AllArgsConstructor
 public class RequirementController {
 
@@ -20,13 +20,19 @@ public class RequirementController {
     public List<Requirement> fetchAllRequirements(){
        return requirementService.getAllRequirements();
     }
-    @GetMapping(path = "{email}")
-    public Optional<TestCase> findRequirementByEmail(@PathVariable String email ){
-        return requirementService.getRequirementByEmail(email);
+//    @GetMapping(path = "{email}")
+////    public Optional<Requirement> findRequirementByEmail(@PathVariable String email ){
+////        return requirementService.getRequirementByEmail(email);
+////    }
+
+    @GetMapping(path = "{id}")
+    public Optional<Requirement> findRequirementById(@PathVariable String id){
+        return requirementService.getRequirementById(id);
     }
 
     @PostMapping
     void addNewRequirement(@RequestBody Requirement requirement ){
         requirementService.addRequirement(requirement);
     }
+
 }

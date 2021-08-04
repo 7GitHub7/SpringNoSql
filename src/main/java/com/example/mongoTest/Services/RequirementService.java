@@ -19,8 +19,12 @@ public class RequirementService {
         return requirementRepository.findAll();
     }
 
-    public Optional<TestCase> getRequirementByEmail(String email) {
+    public Optional<Requirement> getRequirementByEmail(String email) {
         return requirementRepository.findRequirementByEmail(email);
+    }
+
+    public Optional<Requirement> getRequirementById(String id) {
+        return requirementRepository.findRequirementById(id);
     }
 
     public void addRequirement(Requirement requirement) {
