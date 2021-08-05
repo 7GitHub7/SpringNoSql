@@ -33,4 +33,21 @@ public class RequirementService {
         }
         requirementRepository.save(requirement);
     }
+
+    public void updateRequirement(Requirement requirement) {
+        Optional<Requirement> findRequirementQuery = requirementRepository.findById(requirement.getId());
+
+        if (findRequirementQuery.isPresent()) {
+
+            Requirement requirementValues = findRequirementQuery.get();
+
+            List<TestCase> testCaseList = requirementValues.getTestCaseList();
+            for (TestCase test:requirement.getTestCaseList()) {
+
+                    testCaseList.add(test);
+            }
+            requirementValues.setTestCaseList(testCaseList);
+            requirementRepository.save(requirementValues);
+        }
+    }
 }

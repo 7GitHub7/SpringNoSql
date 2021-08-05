@@ -35,4 +35,9 @@ public class RequirementController {
         requirementService.addRequirement(requirement);
     }
 
+    @PutMapping
+    void updateRequirementById(@RequestBody Requirement requirement ){
+        requirementService.updateRequirement(requirement);
+    }
+
 }
